@@ -35,8 +35,8 @@ class MockLLMClient(LLMClient):
     def complete(self, messages: List[ChatMessage], **kwargs) -> str:
         last = messages[-1].content if messages else ""
         if self.echo:
-            return f"[演示] 已接收指令：{last}"
-        return f"已完成子任务：{last}"
+            return f"[演示] 已接收指令：{last[:80]}"
+        return f"已完成子任务：{last[:60]}"
 
 
 class OpenAICompatibleClient(LLMClient):

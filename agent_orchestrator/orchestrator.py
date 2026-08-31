@@ -59,6 +59,6 @@ class Orchestrator:
         logger.info(f"主管 {supervisor} 拆解得到 {len(plan)} 个子任务")
         summary = []
         for subtask in plan:
-            worker = self._agents[workers] if workers else sup
+            worker = self._agents[workers[0]] if workers else sup
             summary.append(worker.act(subtask.description, ""))
         return sup.act("汇总以下结果：\n" + "\n".join(summary), "")
